@@ -1,5 +1,5 @@
 {
-    "name": "winfred/php-telzio",
+    "name": "wpeereboom/php-telzio",
     "description": "Php library to connect with the Telzio API",
     "keywords": ["Telzio","PHP","Call","Phone","Logging"],
     "license": "MIT",
