@@ -1,0 +1,13 @@
+{
+    "name": "winfred/php-telzio",
+    "description": "Php library to connect with the Telzio API",
+    "require": {
+        "guzzlehttp/guzzle": "^6.1"
+    },
+    "authors": [
+        {
+            "name": "Winfred Peereboom",
+            "email": "winfred.peereboom@werkspot.nl"
+        }
+    ]
+}
