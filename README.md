@@ -20,7 +20,7 @@ Installation
 The recommended way to install this library is through [Composer](http://getcomposer.org):
 
 ```bash
-$ php composer.phar require wpeereboom/PhpTelzio dev-master
+$ php composer.phar require wpeereboom/php-telzio dev-master
 ```
 
 Usage

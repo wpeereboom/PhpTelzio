@@ -11,5 +11,10 @@
             "name": "Winfred Peereboom",
             "email": "winfred.peereboom@werkspot.nl"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-0": {
+            "PhpTelzio\\": "src"
+        }
+    }
 }
