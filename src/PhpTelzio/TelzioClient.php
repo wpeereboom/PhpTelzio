@@ -34,15 +34,6 @@ class TelzioClient
     public function getLiveCalls()
     {
         $path = '/calls/live';
-
-
-        // Get the result
-        $response = '';
-
-
-
-
-
     }
 
     public function getLog($number = null, $offset = null)
