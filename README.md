@@ -31,5 +31,14 @@ Usage
 Use the client to get the call data. First construct a client and call the methods to receive the data:
 
 ```php
-Todo
+$telzioClient = new TelzioClient($username, $password);
+
+// To get the live calls
+$liveCalls = $telzioClient->getLiveCalls();
+
+// To get the first 20 records of the call log
+$logResult = $telzioClient->getLog();
+
+// To get the details of a specific call
+$call = $telzioClient->getCallDetails('sd35wegwe-b32we3-23b1c-4583e-ec1338asdc45e'); // CallUUID
 ```
