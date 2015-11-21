@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 class TelzioClient
 {
     const TELZIO_ENDPOINT = 'http://api.telzio.com';
+    const TELZIO_LOG_PATH = '/calls/log';
 
     /**
      * @var Client
@@ -38,12 +39,9 @@ class TelzioClient
 
     public function getLog($number = null, $offset = null)
     {
-        $path = '/calls/log';
+        $response = $this->client->get(self::TELZIO_LOG_PATH, ['auth' => [$this->username, $this->password]]);
 
-        $response = $this->client->get($path, ['auth' => [$this->username, $this->password]]);
-
-        print_r($response->getBody()); exit;
-        $result = ResponseMapper::mapLogResult($response);
+        return ResponseMapper::mapLogResult($response->getBody()->getContents());
     }
 
     public function getCallDetails($callUUId)

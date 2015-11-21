@@ -1,6 +1,8 @@
 <?php
 namespace PhpTelzio;
 
+use PhpTelzio\Entity\Call;
+
 class LogResult
 {
 
@@ -76,6 +78,11 @@ class LogResult
     public function setCalls($calls)
     {
         $this->calls = $calls;
+    }
+
+    public function addCall(Call $call)
+    {
+        $this->calls[] = $call;
     }
 
 }
