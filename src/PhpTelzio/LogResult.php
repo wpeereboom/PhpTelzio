@@ -10,11 +10,6 @@ class LogResult
     protected $totalCount;
     protected $offset;
     protected $calls;
-    private $rawResponse;
-
-    public function __construct()
-    {
-    }
 
     /**
      * @return mixed

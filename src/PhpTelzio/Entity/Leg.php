@@ -1,7 +1,7 @@
 <?php
 namespace PhpTelzio\Entity;
 
-class Call
+class Leg
 {
     /**
      * @var string
@@ -16,22 +16,7 @@ class Call
     /**
      * @var string
      */
-    protected $direction;
-
-    /**
-     * @var string
-     */
-    protected $from;
-
-    /**
-     * @var string
-     */
     protected $to;
-
-    /**
-     * @var string
-     */
-    protected $hangupCause;
 
     /**
      * @var string
@@ -51,22 +36,22 @@ class Call
     /**
      * @var string
      */
-    protected $totalFreeMinutes;
+    protected $hangupCause;
 
     /**
      * @var string
      */
-    protected $totalPrice;
+    protected $price;
 
     /**
-     * @var Leg[]
+     * @var string
      */
-    protected $legs = [];
+    protected $rate;
 
     /**
-     * @var Event[]
+     * @var string
      */
-    protected $events = [];
+    protected $freeMinutes;
 
     /**
      * @return string
@@ -103,38 +88,6 @@ class Call
     /**
      * @return string
      */
-    public function getDirection()
-    {
-        return $this->direction;
-    }
-
-    /**
-     * @param string $direction
-     */
-    public function setDirection($direction)
-    {
-        $this->direction = $direction;
-    }
-
-    /**
-     * @return string
-     */
-    public function getFrom()
-    {
-        return $this->from;
-    }
-
-    /**
-     * @param string $from
-     */
-    public function setFrom($from)
-    {
-        $this->from = $from;
-    }
-
-    /**
-     * @return string
-     */
     public function getTo()
     {
         return $this->to;
@@ -146,22 +99,6 @@ class Call
     public function setTo($to)
     {
         $this->to = $to;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHangupCause()
-    {
-        return $this->hangupCause;
-    }
-
-    /**
-     * @param string $hangupCause
-     */
-    public function setHangupCause($hangupCause)
-    {
-        $this->hangupCause = $hangupCause;
     }
 
     /**
@@ -215,74 +152,64 @@ class Call
     /**
      * @return string
      */
-    public function getTotalFreeMinutes()
+    public function getHangupCause()
     {
-        return $this->totalFreeMinutes;
+        return $this->hangupCause;
     }
 
     /**
-     * @param string $totalFreeMinutes
+     * @param string $hangupCause
      */
-    public function setTotalFreeMinutes($totalFreeMinutes)
+    public function setHangupCause($hangupCause)
     {
-        $this->totalFreeMinutes = $totalFreeMinutes;
+        $this->hangupCause = $hangupCause;
     }
 
     /**
      * @return string
      */
-    public function getTotalPrice()
+    public function getPrice()
     {
-        return $this->totalPrice;
+        return $this->price;
     }
 
     /**
-     * @param string $totalPrice
+     * @param string $price
      */
-    public function setTotalPrice($totalPrice)
+    public function setPrice($price)
     {
-        $this->totalPrice = $totalPrice;
+        $this->price = $price;
     }
 
     /**
-     * @return Leg[]
+     * @return string
      */
-    public function getLegs()
+    public function getRate()
     {
-        return $this->legs;
+        return $this->rate;
     }
 
     /**
-     * @param Leg[] $legs
+     * @param string $rate
      */
-    public function setLegs($legs)
+    public function setRate($rate)
     {
-        $this->legs = $legs;
+        $this->rate = $rate;
     }
 
     /**
-     * @return Event[]
+     * @return string
      */
-    public function getEvents()
+    public function getFreeMinutes()
     {
-        return $this->events;
+        return $this->freeMinutes;
     }
 
     /**
-     * @param Event[] $events
+     * @param string $freeMinutes
      */
-    public function setEvents($events)
+    public function setFreeMinutes($freeMinutes)
     {
-        $this->events = $events;
-    }
-
-    public function addLeg(Leg $leg)
-    {
-        $this->legs[] = $leg;
-    }
-
-    public function addEvent(Event $event)
-    {
-        $this->events[] = $event;
+        $this->freeMinutes = $freeMinutes;
     }
 }
