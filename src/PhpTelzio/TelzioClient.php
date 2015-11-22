@@ -56,12 +56,19 @@ class TelzioClient
      * Get the call log, optional for a specific number and offset
      *
      * @param string $number
-     * @param string $offset
+     * @param int $offset
      * @return LogResult
      */
-    public function getLog($number = null, $offset = null)
+    public function getLog($number = null, $offset = 0)
     {
-        $response = $this->getHttpClient()->get(self::TELZIO_LOG_PATH, ['auth' => [$this->username, $this->password]]);
+        $pathArgs = ['Offset' => $offset];
+        if(!is_null($number)) {
+            $number = str_replace([' ','+','.','-'], '', $number);
+            $pathArgs['Number'] = $number;
+        }
+
+        $path = self::TELZIO_LOG_PATH . '?' . http_build_query($pathArgs);
+        $response = $this->getHttpClient()->get($path, ['auth' => [$this->username, $this->password]]);
 
         return ResponseMapper::mapLogResult($response->getBody()->getContents());
     }
