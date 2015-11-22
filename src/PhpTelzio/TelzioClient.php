@@ -8,10 +8,10 @@ use PhpTelzio\Mapper\ResponseMapper;
 
 class TelzioClient
 {
-    const TELZIO_ENDPOINT           = 'http://api.telzio.com';
-    const TELZIO_LOG_PATH           = '/calls/log';
-    const TELZIO_LIVE_CALL_PATH     = '/calls/live';
-    const TELZIO_CALL_DETAILS_PATH  = '/calls/details/';
+    const TELZIO_ENDPOINT = 'http://api.telzio.com';
+    const TELZIO_LOG_PATH = '/calls/log';
+    const TELZIO_LIVE_CALL_PATH = '/calls/live';
+    const TELZIO_CALL_DETAILS_PATH = '/calls/details/';
 
     /**
      * @var Client
@@ -38,8 +38,6 @@ class TelzioClient
     {
         $this->username = $username;
         $this->password = $password;
-
-        $this->client = new Client(['base_uri' => self::TELZIO_ENDPOINT, 'timeout'  => 5]);
     }
 
     /**
@@ -49,7 +47,7 @@ class TelzioClient
      */
     public function getLiveCalls()
     {
-        $response = $this->client->get(self::TELZIO_LIVE_CALL_PATH, ['auth' => [$this->username, $this->password]]);
+        $response = $this->getHttpClient()->get(self::TELZIO_LIVE_CALL_PATH, ['auth' => [$this->username, $this->password]]);
 
         return ResponseMapper::mapLiveCallResult($response->getBody()->getContents());
     }
@@ -58,12 +56,12 @@ class TelzioClient
      * Get the call log, optional for a specific number and offset
      *
      * @param string $number
-     * @param string  $offset
+     * @param string $offset
      * @return LogResult
      */
     public function getLog($number = null, $offset = null)
     {
-        $response = $this->client->get(self::TELZIO_LOG_PATH, ['auth' => [$this->username, $this->password]]);
+        $response = $this->getHttpClient()->get(self::TELZIO_LOG_PATH, ['auth' => [$this->username, $this->password]]);
 
         return ResponseMapper::mapLogResult($response->getBody()->getContents());
     }
@@ -75,11 +73,19 @@ class TelzioClient
      */
     public function getCallDetails($callUUId)
     {
-        $response = $this->client->get(
+        $response = $this->getHttpClient()->get(
             self::TELZIO_CALL_DETAILS_PATH . $callUUId,
             ['auth' => [$this->username, $this->password]]
         );
 
         return CallMapper::mapCall($response->getBody()->getContents());
+    }
+
+    /**
+     * @return Client
+     */
+    protected function getHttpClient()
+    {
+        return new Client(['base_uri' => self::TELZIO_ENDPOINT, 'timeout' => 5]);
     }
 }
