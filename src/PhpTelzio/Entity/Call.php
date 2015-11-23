@@ -169,7 +169,7 @@ class Call
      */
     public function getStarted()
     {
-        return str_replace(['-','T'],['', ' '], $this->started);
+        return$this->started;
     }
 
     /**
