@@ -39,6 +39,15 @@ class LegMapper
         if (isset($rawLegData['To'])) {
             $leg->setTo($rawLegData['To']);
         }
+        if (isset($rawLegData['ToUser'])) {
+            $leg->setTo($rawLegData['ToUser']);
+        }
+        if (isset($rawLegData['FromUser'])) {
+            $leg->setTo($rawLegData['FromUser']);
+        }
+        if (isset($rawLegData['From'])) {
+            $leg->setTo($rawLegData['From']);
+        }
         if (isset($rawLegData['FreeMinutes'])) {
             $leg->setFreeMinutes($rawLegData['FreeMinutes']);
         }

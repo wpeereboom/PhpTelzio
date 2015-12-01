@@ -21,6 +21,21 @@ class Leg
     /**
      * @var string
      */
+    protected $toUser;
+
+    /**
+     * @var string
+     */
+    protected $from;
+
+    /**
+     * @var string
+     */
+    protected $fromUser;
+
+    /**
+     * @var string
+     */
     protected $started;
 
     /**
@@ -211,5 +226,53 @@ class Leg
     public function setFreeMinutes($freeMinutes)
     {
         $this->freeMinutes = $freeMinutes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToUser()
+    {
+        return $this->toUser;
+    }
+
+    /**
+     * @param string $toUser
+     */
+    public function setToUser($toUser)
+    {
+        $this->toUser = $toUser;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFrom()
+    {
+        return $this->from;
+    }
+
+    /**
+     * @param string $from
+     */
+    public function setFrom($from)
+    {
+        $this->from = $from;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFromUser()
+    {
+        return $this->fromUser;
+    }
+
+    /**
+     * @param string $fromUser
+     */
+    public function setFromUser($fromUser)
+    {
+        $this->fromUser = $fromUser;
     }
 }

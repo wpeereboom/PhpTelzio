@@ -21,8 +21,6 @@ class CallMapper
 
     static protected function mapCallData($callData)
     {
-        print_r($callData); exit;
-        
         $call = new Call();
 
         if (isset($callData['CallUUID'])) {
