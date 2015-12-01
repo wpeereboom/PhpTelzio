@@ -3,6 +3,7 @@ namespace PhpTelzio;
 
 use GuzzleHttp\Client;
 use PhpTelzio\Entity\Call;
+use PhpTelzio\Mapper\AccountMapper;
 use PhpTelzio\Mapper\CallMapper;
 use PhpTelzio\Mapper\ResponseMapper;
 
@@ -12,6 +13,7 @@ class TelzioClient
     const TELZIO_LOG_PATH = '/calls/log';
     const TELZIO_LIVE_CALL_PATH = '/calls/live';
     const TELZIO_CALL_DETAILS_PATH = '/calls/details/';
+    const TELZIO_ACCOUNT_BALANCE = '/account/balance';
 
     /**
      * @var Client
@@ -86,6 +88,19 @@ class TelzioClient
         );
 
         return CallMapper::mapCall($response->getBody()->getContents());
+    }
+
+    /**
+     * @return Entity\Leg
+     */
+    public function getAccount()
+    {
+        $response = $this->getHttpClient()->get(
+            self::TELZIO_ACCOUNT_BALANCE,
+            ['auth' => [$this->username, $this->password]]
+        );
+
+        return AccountMapper::mapAccount($response->getBody()->getContents());
     }
 
     /**
