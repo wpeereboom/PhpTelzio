@@ -41,4 +41,7 @@ $logResult = $telzioClient->getLog();
 
 // To get the details of a specific call
 $call = $telzioClient->getCallDetails('sd35wegwe-b32we3-23b1c-4583e-ec1338asdc45e'); // CallUUID
+
+// To get the account details, currently only balance information
+$account = $telzioClient->getAccount();
 ```
